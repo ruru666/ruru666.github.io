@@ -33,7 +33,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/06/03/sqli-labs通关详解/16.png">
 <meta property="og:image" content="http://yoursite.com/2019/06/03/sqli-labs通关详解/17.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/06/03/sqli-labs通关详解/18.jpg">
-<meta property="og:updated_time" content="2019-06-12T12:52:08.404Z">
+<meta property="og:updated_time" content="2019-06-12T15:17:14.399Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sqli-labs通关详解">
 <meta name="twitter:image" content="http://yoursite.com/2019/06/03/sqli-labs通关详解/title.jpg">
@@ -259,7 +259,7 @@
 <p><img src="/2019/06/03/sqli-labs通关详解/13.png" alt></p>
 <p>接下来就可以进行常规操作了，就可以获取数据了。</p>
 <h3 id="Less-4-双引号变形注入-："><a href="#Less-4-双引号变形注入-：" class="headerlink" title="Less-4(双引号变形注入)："></a>Less-4(双引号变形注入)：</h3><p>先找到注入点，<code>首先输入单引号</code>、发现没有报错提醒，那我们就输入双引号，发现出现了和上一题一样的报错提醒，那就是和上一题一样的步骤就行了。</p>
-<h3 id="Less-5-双查询注入注入-："><a href="#Less-5-双查询注入注入-：" class="headerlink" title="Less-5(双查询注入注入)："></a>Less-5(双查询注入注入)：</h3><p>这道题可以用双查询注入，我们来一起学习一下双查询注入。</p>
+<h3 id="Less-5-双查询单引号注入-："><a href="#Less-5-双查询单引号注入-：" class="headerlink" title="Less-5(双查询单引号注入)："></a>Less-5(双查询单引号注入)：</h3><p>这道题可以用双查询注入，我们来一起学习一下双查询注入。</p>
 <p>双注入的原理，简单一句话原理就是有研究人员发现，<strong>当在一个聚合函数，比如count函数后面如果使用分组语句就会把查询的一部分以错误的形式显示出来。</strong></p>
 <p>加黑字体是全文中最总要的一句话，一定要好好记住！！</p>
 <p>这种方法方法通常用于注入的时候没有返回位。</p>
@@ -291,7 +291,8 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">查users表中的用户名：</span><br><span class="line">http://127.0.0.1/sqli-labs/Less-5/?id=-1&apos; union select 1,count(*),concat((select username from users limit 0,1),&apos;~~&apos;,floor(rand()*2)) as a from  information_schema.tables group by a --+</span><br><span class="line">查每个用户民对应的密码：</span><br><span class="line">http://127.0.0.1/sqli-labs/Less-5/?id=-1&apos; union select 1,count(*),concat((select password from users where username=&apos;Dumb&apos;),&apos;~~&apos;,floor(rand()*2)) as a from  information_schema.tables group by a --+</span><br></pre></td></tr></table></figure>
 <p><font size="6" color="red">总结</font>:</p>
 <p>恰好也发现了这种注入方式中子查询若使用group_concat()函数无法触发报错!</p>
-
+<h3 id="Less-6-双查询双引号注入-："><a href="#Less-6-双查询双引号注入-：" class="headerlink" title="Less-6(双查询双引号注入)："></a>Less-6(双查询双引号注入)：</h3><p>​    这道题和第五题一样，只不过是双引号。</p>
+<h3 id="Less-7"><a href="#Less-7" class="headerlink" title="Less-7():"></a>Less-7():</h3>
       
 
       
@@ -454,7 +455,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#sql注入的知识点："><span class="toc-number">1.1.</span> <span class="toc-text">sql注入的知识点：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-1-单引号注入-："><span class="toc-number">1.1.1.</span> <span class="toc-text">Less-1(单引号注入)：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-2-整形注入-："><span class="toc-number">1.1.2.</span> <span class="toc-text">Less-2(整形注入)：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-3-单引号变形注入-："><span class="toc-number">1.1.3.</span> <span class="toc-text">Less-3(单引号变形注入)：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-4-双引号变形注入-："><span class="toc-number">1.1.4.</span> <span class="toc-text">Less-4(双引号变形注入)：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-5-双查询注入注入-："><span class="toc-number">1.1.5.</span> <span class="toc-text">Less-5(双查询注入注入)：</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#sql注入的知识点："><span class="toc-number">1.1.</span> <span class="toc-text">sql注入的知识点：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-1-单引号注入-："><span class="toc-number">1.1.1.</span> <span class="toc-text">Less-1(单引号注入)：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-2-整形注入-："><span class="toc-number">1.1.2.</span> <span class="toc-text">Less-2(整形注入)：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-3-单引号变形注入-："><span class="toc-number">1.1.3.</span> <span class="toc-text">Less-3(单引号变形注入)：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-4-双引号变形注入-："><span class="toc-number">1.1.4.</span> <span class="toc-text">Less-4(双引号变形注入)：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-5-双查询单引号注入-："><span class="toc-number">1.1.5.</span> <span class="toc-text">Less-5(双查询单引号注入)：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-6-双查询双引号注入-："><span class="toc-number">1.1.6.</span> <span class="toc-text">Less-6(双查询双引号注入)：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-7"><span class="toc-number">1.1.7.</span> <span class="toc-text">Less-7():</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -491,6 +492,8 @@
     </div>
   </div>
 </footer>
+<!--ҳ����С����-->
+<script type="text/javascript" src="/love.js"></script>
     </div>
     <script>
 	var yiliaConfig = {
@@ -566,15 +569,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">kali</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">web安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
