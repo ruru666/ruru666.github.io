@@ -4,25 +4,48 @@
   
     
     <entry>
-      <title>ssh</title>
-      <link href="/2019/09/15/ssh/"/>
-      <url>/2019/09/15/ssh/</url>
+      <title>Struts2框架学习</title>
+      <link href="/2019/09/15/Struts2%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/"/>
+      <url>/2019/09/15/Struts2%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/</url>
       
-        <content type="html"><![CDATA[<p>测绘</p><h1 id="车市"><a href="#车市" class="headerlink" title="车市"></a>车市</h1>]]></content>
+        <content type="html"><![CDATA[<h1 id="什么是Struts2框架："><a href="#什么是Struts2框架：" class="headerlink" title="什么是Struts2框架："></a>什么是Struts2框架：</h1><p><strong>Struts2是一个基于MVC设计模式的Web应用框架，它本质上相当于一个servlet，在MVC设计模式中，Struts2作为控制器(Controller)来建立模型与视图的数据交互。Struts2是Struts1的下一代产品，这个框架充分发挥了Struts1和WebWork这两种技术的优势，抛弃原来Struts1的缺点，使得Web开发更加容易。</strong></p>]]></content>
       
       
       <categories>
           
-          <category> ssh </category>
+          <category> java </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> java框架 </tag>
+            <tag> javaweb框架 </tag>
             
-            <tag> ssh </tag>
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Struts2框架学习</title>
+      <link href="/2019/09/15/ssh/"/>
+      <url>/2019/09/15/ssh/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> javaweb框架 </tag>
             
         </tags>
       
